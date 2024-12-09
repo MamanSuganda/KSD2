@@ -21,8 +21,8 @@ let valueCahaya = document.querySelector(".value-cahaya");
     const database = firebase.database();
 
     // Referensi ke data di Firebase
-    const dataRef = database.ref('massages/suhu'); // Ganti 'dataPath' dengan path data di Firebase
-    const dataRefK = database.ref('massages/Kelembapan');
+    const dataRef = database.ref('massages/suhu/value'); // Ganti 'dataPath' dengan path data di Firebase
+    const dataRefK = database.ref('massages/Kelembapan/value');
     const dataRefC = database.ref('massages/Cahaya/value');
 
     // Mendengarkan perubahan data di Firebase

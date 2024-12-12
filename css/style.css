@@ -201,21 +201,21 @@ p{
 .value-suhu{
     position: relative;
     font-family: "Poppins", sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     color: #231c3d;
     
 }
 .value-kelembapan{
     position: relative;
     font-family: "Poppins", sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     color: #231c3d;
     
 }
 .value-cahaya{
     position: relative;
     font-family: "Poppins", sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     color: #231c3d;
     
 }

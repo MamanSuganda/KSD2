@@ -7,13 +7,13 @@ let valueCahaya = document.querySelector(".value-cahaya");
 
     // Konfigurasi Firebase
     const firebaseConfig = {
-        apiKey: "AIzaSyBpSD8PtcgcbZh8OVUP9Bv3c4cYREZi1Jo",
-        authDomain: "dataesp32-1d9da.firebaseapp.com",
-        databaseURL: "https://dataesp32-1d9da-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "dataesp32-1d9da",
-        storageBucket: "dataesp32-1d9da.firebasestorage.app",
-        messagingSenderId: "693577536143",
-        appId: "1:693577536143:web:a50e5328274df7bdd656fa"
+      apiKey: "AIzaSyBRfMM4PF98cP37iUkvnsDdnRElocBo0y8",
+      authDomain: "ksd2esp.firebaseapp.com",
+      databaseURL: "https://ksd2esp-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "ksd2esp",
+      storageBucket: "ksd2esp.firebasestorage.app",
+      messagingSenderId: "733673278629",
+      appId: "1:733673278629:web:3acb763304f5e4477b914c"
       };
 
     // Inisialisasi Firebase
@@ -21,27 +21,29 @@ let valueCahaya = document.querySelector(".value-cahaya");
     const database = firebase.database();
 
     // Referensi ke data di Firebase
-    const dataRef = database.ref('massages/Suhu/value'); // Ganti 'dataPath' dengan path data di Firebase
-    const dataRefK = database.ref('massages/Kelembaban/value');
-    const dataRefC = database.ref('massages/Cahaya/value');
+    // Ganti 'dataPath' dengan path data di Firebase
+    const dataRef = database.ref('SensorData/temperature/value');
+    const dataRefK = database.ref('SensorData/humidity/value');
+    const dataRefC = database.ref('SensorData/lightIntensity/value');
 
     // Mendengarkan perubahan data di Firebase
     dataRef.on('value', (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val();
         // Perbarui nilai data di HTML
-        let progressValue = 0;
+        let progressValue = 0.0;
         let speed = 10;
+        let dataSuhu = parseInt (progressValue);
 
         progressEndValue = data;
         let progress = setInterval(() => {
-            progressValue++;
-            valueSuhu.textContent = `${progressValue}°C`;
+            dataSuhu++;
+            valueSuhu.textContent = `${progressEndValue}°C`;
             progressSuhu.style.background = `conic-gradient(
-            #e56b00 ${progressValue * 3.6}deg,
-            #e3edf7 ${progressValue * 3.6}deg
+            #e56b00 ${progressEndValue * 3.6}deg,
+            #e3edf7 ${progressEndValue * 3.6}deg
             )`;
-            if (progressValue == progressEndValue){
+            if (dataSuhu == progressEndValue){
                 clearInterval(progress);
             }
         }, speed);
@@ -59,16 +61,17 @@ let valueCahaya = document.querySelector(".value-cahaya");
           // Perbarui nilai data di HTML
           let progressValueK = 0;
           let speed = 10;
+          let dataKelembaban = parseInt (progressValueK);
   
           progressEndValueK = dataK;
           let progressK = setInterval(() => {
-              progressValueK++;
-              valueKelembapan.textContent = `${progressValueK}%`;
+              dataKelembaban++;
+              valueKelembapan.textContent = `${progressEndValueK}%`;
               progressKelembapan.style.background = `conic-gradient(
-              #007cdb ${progressValueK * 3.6}deg,
-              #e3edf7 ${progressValueK * 3.6}deg
+              #007cdb ${progressEndValueK * 3.6}deg,
+              #e3edf7 ${progressEndValueK * 3.6}deg
               )`;
-              if (progressValueK == progressEndValueK){
+              if (dataKelembaban == progressEndValueK){
                   clearInterval(progressK);
               }
           }, speed);
@@ -86,16 +89,17 @@ let valueCahaya = document.querySelector(".value-cahaya");
         // Perbarui nilai data di HTML
         let progressValueC = 0;
         let speed = 10;
+        let dataCahaya = parseInt(progressValueC);
 
         progressEndValueC = dataC;
         let progressC = setInterval(() => {
-            progressValueC++;
-            valueCahaya.textContent = `${progressValueC}%`;
+            dataCahaya++;
+            valueCahaya.textContent = `${progressEndValueC}%`;
             progressCahaya.style.background = `conic-gradient(
-            #d5b608 ${progressValueC * 3.6}deg,
-            #e3edf7 ${progressValueC * 3.6}deg
+            #d5b608 ${progressEndValueC * 3.6}deg,
+            #e3edf7 ${progressEndValueC * 3.6}deg
             )`;
-            if (progressValueC == progressEndValueC){
+            if (dataCahaya == progressEndValueC){
                 clearInterval(progressC);
             }
         }, speed);
